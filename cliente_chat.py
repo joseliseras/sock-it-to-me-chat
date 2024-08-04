@@ -5,7 +5,7 @@ import threading
 detener_hilo = threading.Event()
 
 def recibir_mensajes(sock):
-    while not detener_hilo.is_set():
+    while not detener_hilo.is_set(): #si es false contunua
         try:
             mensaje = sock.recv(1024)
             if not mensaje:
@@ -15,13 +15,13 @@ def recibir_mensajes(sock):
                 break
             print(mensaje.decode('utf-8'))
         except:
-            if not detener_hilo.is_set():
+            if not detener_hilo.is_set(): #si es false imprime y cierra
                 print("Error al recibir mensaje")
             sock.close()
             break
 
 def main():
-    cliente = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    cliente = socket.socket(socket.AF_INET, socket.SOCK_STREAM) #AF_INET = IPv4 SOCK_STRAM = TCP
     try:
         cliente.connect(('127.0.0.1', 12345))
         puerto_cliente = cliente.getsockname()[1]
