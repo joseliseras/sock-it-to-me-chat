@@ -27,7 +27,7 @@ try:
                     # Recibir mensajes de los clientes
                     mensaje = sock.recv(1024)
                     if mensaje:
-                        # Hacer broadcast del mensaje a todos los demás clientes
+                        # Hacer broadcast(transmision) del mensaje a todos los demás clientes
                         for conexion in conexiones:
                             if conexion != servidor and conexion != sock:
                                 try:
