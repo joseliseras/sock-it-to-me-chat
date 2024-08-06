@@ -37,6 +37,7 @@ try:
                                     conexiones.remove(conexion)
                     else:
                         # Eliminar la conexión si no hay mensaje (desconexión)
+                        conexion.close()
                         conexiones.remove(sock)
                 except:
                     continue
